@@ -1,0 +1,16 @@
+<!-- <form>
+    <input type="text">
+
+</form> -->
+
+<input type="text" [(ngModel)]="itemSearching">
+
+<nb-items-list [list] = "list"></nb-items-list>
+
+<!-- <div *ngIf="searchValue=='' && showWhenEmpty">
+    <div *ngFor="let item of itemsNotSelected" (click)="selectItem(item)">{{item.name}}</div>
+</div> -->
+
+<div *ngIf="searchValue!==''">
+    <div *ngFor="let item of itemsNotSelected | jsNgSearch:searchValue:'name':showWhenEmpty" (click)="selectItem(item)">{{item.name}}</div>
+</div>

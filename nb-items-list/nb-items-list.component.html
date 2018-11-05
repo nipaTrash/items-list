@@ -1,0 +1,31 @@
+<div [ngClass]="itemsListClass">
+    <div class="items-list__header">
+        <div class="items-list__title">
+            <div *ngIf="name; else noName"> {{ name[lang] }} </div>
+    
+            <ng-template #noName>
+                <div *ngIf="nameFromType">{{ nameFromType | JsNgTranslator | async }}</div>
+            </ng-template>
+        </div>
+
+        <div class="items-list__filters">
+
+            <div class="items-list__filter">Audio</div>
+            <div class="items-list__filter">Video</div>
+            <div class="items-list__filter">Todo</div>
+            <div class="items-list__filter" *ngIf="view !== 'full'" (click)="changeView('full')">
+                <js-ng-icon [icon]="'enlarge'"></js-ng-icon>
+            </div>
+
+            <div class="items-list__filter" *ngIf="view == 'full'" (click)="changeView()">
+                <js-ng-icon [icon]="'shrink'"></js-ng-icon>
+            </div>
+            
+        </div>
+
+    </div>
+        <div>
+            <nb-item *ngFor="let item of itemsList" [item]="item" [sortOfCard]="sortOfCard" class="card"></nb-item>
+        </div>
+        
+</div>

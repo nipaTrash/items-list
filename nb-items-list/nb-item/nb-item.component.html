@@ -1,0 +1,24 @@
+<div [class]="cardCss" *ngIf="visible">
+
+  <img [class]="cardAvatarCss" [src]="getAvatar()" alt="">
+
+  <h4 [class]="cardNameCss" [routerLink]="'/' + itemToDisplay?.urlName">{{ itemToDisplay?.name }}</h4>
+  
+  <h5 [class]="cardTitleCss" [routerLink]="'/' + itemToDisplay?.title">{{ itemToDisplay?.title }}</h5>
+
+  <div [class]="cardContentCss">{{ itemToDisplay?.content }}</div>
+  
+  <div [class]="cardFooterCss">
+
+    <span class="card-social" >
+        <nb-social-stats [target]="itemToDisplay" [socialOptionsType]="{type:itemToDisplay?.type, sortOfCard: sort}"></nb-social-stats>   
+    </span>
+  
+    <div class="card-edit">
+      <button *ngIf="editable" nbButton="primary" nbButtonStyle = "clear" (click)="editItem()">{{ EditVars.edit | JsNgTranslator | async }}</button>
+      <button *ngIf="contribute" nbButton="primary" nbButtonStyle = "clear" (click)="editItem()">{{ EditVars.contribute | JsNgTranslator | async }}</button>
+      <button *ngIf="comment" nbButton="primary" nbButtonStyle = "clear" (click)="editItem()">{{ EditVars.comment | JsNgTranslator | async }}</button>
+    </div>  
+    
+  </div>
+</div>
