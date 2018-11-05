@@ -15,6 +15,7 @@
     </span>
   
     <div class="card-edit">
+      <button *ngIf="editable" nbButton="secondary" nbButtonStyle = "clear">{{ EditVars.delete | JsNgTranslator | async }}</button>
       <button *ngIf="editable" nbButton="primary" nbButtonStyle = "clear" (click)="editItem()">{{ EditVars.edit | JsNgTranslator | async }}</button>
       <button *ngIf="contribute" nbButton="primary" nbButtonStyle = "clear" (click)="editItem()">{{ EditVars.contribute | JsNgTranslator | async }}</button>
       <button *ngIf="comment" nbButton="primary" nbButtonStyle = "clear" (click)="editItem()">{{ EditVars.comment | JsNgTranslator | async }}</button>
